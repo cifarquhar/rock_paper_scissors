@@ -1,19 +1,26 @@
 require 'sinatra'
 require 'sinatra/contrib/all'
 require 'pry'
-require './models/game.rb'
+# require './models/game.rb'
 
 get '/rps/:first/:second' do
   pairing = [params[:first],params[:second]]
-  if pairing.include?("rock") && pairing.include?("scissors")
-    return "Rock wins!"
+  # return Game.get_winner(pairing)
+  
+  @winner = if pairing.include?("rock") && pairing.include?("scissors")
+     "Rock wins!"
   elsif pairing.include?("scissors") && pairing.include?("paper")
-    return "Scissors win!"
+     "Scissors win!"
   elsif pairing.include?("paper") && pairing.include?("rock")
-    return "Paper wins!"
+     "Paper wins!"
   elsif pairing[0] == pairing[1]
-    return "Draw!"
+     "Draw!"
   else
-    return "Something's gone wrong..."
+     "Something's gone wrong..."
   end
+  erb(:result)
+end
+
+get '/' do
+  erb(:welcome)
 end
