@@ -5,14 +5,14 @@ class Game
   end
 
 
-def get_winner(hands)
-  if hands.include?("rock") && hands.include?("scissors")
+def get_winner()
+  if @array.include?("rock") && @array.include?("scissors")
      "Rock wins!"
-  elsif hands.include?("scissors") && hands.include?("paper")
+  elsif @array.include?("scissors") && @array.include?("paper")
     "Scissors win!"
-  elsif hands.include?("paper") && hands.include?("rock")
+  elsif @array.include?("paper") && @array.include?("rock")
      "Paper wins!"
-  elsif hands[0] == hands[1]
+  elsif @array[0] == @array[1]
      "Draw!"
   else
      "Something's gone wrong..."
@@ -20,9 +20,9 @@ def get_winner(hands)
 end
 
 
-test_array = [4,4]
+# test_array = Game.new(4,4)
 
-return get_winner(test_array)
+# puts test_array.get_winner
 
 
 end
